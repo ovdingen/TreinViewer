@@ -1,0 +1,6 @@
+{
+    "require": {
+        "igorw/event-source": "^1.0",
+        "jmikola/geojson": "^1.0"
+    }
+}
