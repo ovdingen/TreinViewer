@@ -1,0 +1,11 @@
+[Unit]
+Description=Converts NS Treinposities to GeoJSON for use by TreinViewer
+Documentation=https://github.com/ovdingen/TreinViewer
+
+
+[Service]
+ExecStart=/usr/bin/php7.0 /location_of_the_service
+
+[Install]
+WantedBy=multi-user.target
+Alias=treinviewer-ndovservice
