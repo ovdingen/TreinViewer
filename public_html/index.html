@@ -50,7 +50,6 @@
 
             url: './positions.geojson',
             type: 'json',
-            interval: 3 * 1000
         }, {
             onEachFeature: function(f, l) {
                 l.bindPopup(f.properties.popupContent);
@@ -61,7 +60,8 @@
                 }
 
                 return L.circleMarker(latlng, geojsonMarkerOptions.standaard);
-            }
+            },
+            interval: 3 * 1000
         }).addTo(map);
 
 
