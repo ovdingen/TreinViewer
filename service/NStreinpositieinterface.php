@@ -13,7 +13,7 @@ function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel
     $properties['materieelvolgnummer'] = $materieeldeel->MaterieelVolgNummer;
     $properties['snelheid'] = $materieeldeel->Snelheid[0];
     $properties['richting'] = $materieeldeel->Richting[0];
-    $properties['id'] = $materieeldeel->MaterieelDeelNummer[0]; // This will allow leaflet-realtime to keep track of the entries in the GeoJSON
+    $properties['id'] = (int) $materieeldeel->MaterieelDeelNummer; // This will allow leaflet-realtime to keep track of the entries in the GeoJSON
     $properties['popupContent'] = "<b>Trein " . $treinnummer . "<br>Materieelnummer " . $properties['materieelnummer'] . "<br>" . "Snelheid: " . $properties['snelheid'] . "km/h<br>" . "Richting: " . $properties['richting'] . " graden";
 
     $point = new \GeoJson\Geometry\Point([(float) $materieeldeel->Longitude, (float) $materieeldeel->Latitude]);
