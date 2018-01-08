@@ -1,10 +1,12 @@
 <?php
 $config = array();
 
+//GEOJSON
 $config['geojson_location'] = "/path/where/the/geojson/should/be/placed/";
 
-$config['arnu_db_user'] = "arnu";
-$config['arnu_db_pass'] = "arnu";
+//ARNU
+$config['arnu_db_user'] = "username";
+$config['arnu_db_pass'] = "P4ssw0rd!";
 $config['arnu_db_host'] = "localhost";
-$config['arnu_db_name'] = "arnu";
+$config['arnu_db_name'] = "arnu_db";
 $config['arnu_db_table'] = "arnu";
