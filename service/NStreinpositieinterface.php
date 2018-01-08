@@ -51,7 +51,7 @@ while (true) {
                     array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($materieeldeel, $trainNumber, $arnu));
                 }
             } else {
-                array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($value->TreinMaterieelDelen, $trainNumber));
+                array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($value->TreinMaterieelDelen, $trainNumber, $arnu));
             }
         }
     }
