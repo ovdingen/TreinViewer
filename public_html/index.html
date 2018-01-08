@@ -18,17 +18,25 @@
     <div id="map" class="map"></div>
     <script type="text/javascript">
         var geojsonMarkerOptions = {
-            'standaard': {
+            'IC': {
                 radius: 8,
-                fillColor: "#ff7800",
+                fillColor: "#ffac00",
+                color: "#092869",
+                weight: 1.5,
+                opacity: 1,
+                fillOpacity: 0.8
+            },
+            'SPR': {
+                radius: 8,
+                fillColor: "#e0e0de",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
             },
-            'groene': {
+            'default': {
                 radius: 8,
-                fillColor: "#00ff00",
+                fillColor: "#ff0000",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
@@ -56,11 +64,11 @@
                 l.bindPopup(f.properties.popupContent);
             },
             pointToLayer(feature, latlng) {
-                if (feature.properties.materieelnummer[0] == "9556") {
-                    return L.circleMarker(latlng, geojsonMarkerOptions.groene);
+                if(feature.properties.transportmodecode in geojsonMarkerOptions) {
+                    return geojsonMarkerOptions[feature.properties.transportmodecode);
+                } else {
+                    return L.circleMarker(latlng, geojsonMarkerOptions.default);
                 }
-
-                return L.circleMarker(latlng, geojsonMarkerOptions.standaard);
             },
             interval: 3 * 1000
         }).addTo(map);
