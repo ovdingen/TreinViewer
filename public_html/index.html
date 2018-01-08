@@ -6,10 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/leaflet-realtime.dist.js"></script>
     <style>
-        .map {
-            width: 100%;
-            height: 1000px;
-        }
+        html, body, #map {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
     </style>
 </head>
 
@@ -17,25 +18,17 @@
     <div id="map" class="map"></div>
     <script type="text/javascript">
         var geojsonMarkerOptions = {
-            'IC': {
+            'standaard': {
                 radius: 8,
-                fillColor: "#ffac00",
-                color: "#092869",
-                weight: 1.5,
-                opacity: 1,
-                fillOpacity: 0.8
-            },
-            'SPR': {
-                radius: 8,
-                fillColor: "#e0e0de",
+                fillColor: "#ff7800",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
             },
-            'default': {
+            'groene': {
                 radius: 8,
-                fillColor: "#ff0000",
+                fillColor: "#00ff00",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
@@ -63,11 +56,11 @@
                 l.bindPopup(f.properties.popupContent);
             },
             pointToLayer(feature, latlng) {
-                if(feature.properties.transportmodecode in geojsonMarkerOptions) {
-                    return geojsonMarkerOptions[feature.properties.transportmodecode);
-                } else {
-                    return L.circleMarker(latlng, geojsonMarkerOptions.default);
+                if (feature.properties.materieelnummer[0] == "9556") {
+                    return L.circleMarker(latlng, geojsonMarkerOptions.groene);
                 }
+
+                return L.circleMarker(latlng, geojsonMarkerOptions.standaard);
             },
             interval: 3 * 1000
         }).addTo(map);
@@ -85,6 +78,8 @@
             }
           }*/
     </script>
+
+    <script src="js/fullscreen.js"></script>
 </body>
 
 </html>
