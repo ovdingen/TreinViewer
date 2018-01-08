@@ -11,7 +11,7 @@ $subscriber = new ZMQSocket($context, ZMQ::SOCKET_SUB);
 $subscriber->connect("tcp://pubsub.besteffort.ndovloket.nl:7664");
 $subscriber->setSockOpt(ZMQ::SOCKOPT_SUBSCRIBE, "/RIG/NStreinpositiesInterface5");
 
-function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel, $treinnummer) {
+function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel, $treinnummer, ARNU $arnu) {
     $arnuData = $arnu->getJourney($treinnummer);
 
     $properties = array();
@@ -48,7 +48,7 @@ while (true) {
             $trainNumber = (string) $value->TreinNummer;
             if(is_array($value->TreinMaterieelDelen)) {
                 foreach($value->TreinMaterieelDelen as $materieeldeel) {
-                    array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($materieeldeel, $trainNumber));
+                    array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($materieeldeel, $trainNumber, $arnu));
                 }
             } else {
                 array_push($features, maakGeoJSONFeatureVanTreinMaterieelDeel($value->TreinMaterieelDelen, $trainNumber));
