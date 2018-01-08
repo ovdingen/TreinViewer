@@ -1,6 +1,10 @@
 <?php
 include '../vendor/autoload.php';
 include '../config.php';
+include '../classes/ARNU.php';
+
+$arnu = new ARNU($config['arnu_db_host'], $config['arnu_db_name'], $config['arnu_db_user'], $config['arnu_db_pass'], $config['arnu_db_table']);
+
 $context = new ZMQContext();
 $subscriber = new ZMQSocket($context, ZMQ::SOCKET_SUB);
 
@@ -8,13 +12,24 @@ $subscriber->connect("tcp://pubsub.besteffort.ndovloket.nl:7664");
 $subscriber->setSockOpt(ZMQ::SOCKOPT_SUBSCRIBE, "/RIG/NStreinpositiesInterface5");
 
 function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel, $treinnummer) {
+    $arnuData = $arnu->getJourney($treinnummer);
+
     $properties = array();
     $properties['materieelnummer'] = $materieeldeel->MaterieelDeelNummer[0];
     $properties['materieelvolgnummer'] = $materieeldeel->MaterieelVolgNummer;
     $properties['snelheid'] = $materieeldeel->Snelheid[0];
     $properties['richting'] = $materieeldeel->Richting[0];
+
+    if($properties) {
+        $properties['transportmodecode'] = $arnuData['transportmodecode'];
+        $properties['servicetype'] = $arnuData['servicetype'];
+    } else {
+        $properties['transportmodecode'] = "UNKNOWN";
+        $properties['servicetype'] = "UNKNOWN";
+    }
+
     $properties['id'] = (int) $materieeldeel->MaterieelDeelNummer; // This will allow leaflet-realtime to keep track of the entries in the GeoJSON
-    $properties['popupContent'] = "<b>Trein " . $treinnummer . "<br>Materieelnummer " . $properties['materieelnummer'] . "<br>" . "Snelheid: " . $properties['snelheid'] . "km/h<br>" . "Richting: " . $properties['richting'] . " graden";
+    $properties['popupContent'] = "<b>" . $properties['transportmodecode'] . "Trein " . $treinnummer . "<br>Materieelnummer " . $properties['materieelnummer'] . "<br>" . "Snelheid: " . $properties['snelheid'] . "km/h<br>" . "Richting: " . $properties['richting'] . " graden<br>Servicetype: " . $properties['servicetype'];
 
     $point = new \GeoJson\Geometry\Point([(float) $materieeldeel->Longitude, (float) $materieeldeel->Latitude]);
 
