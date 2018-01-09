@@ -68,6 +68,7 @@ function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel
     if ($properties)
         {
         $properties['transportmodecode'] = $dvsData['transportmodecode'];
+        $properties['stopstations'] = json_decode($dvsData['stopstations']);
         }
       else
         {
