@@ -60,6 +60,9 @@ function verwerkNSTreinPositieBericht(string $contents, DVS $dvs, array $config)
 
 function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel, $treinnummer, DVS $dvs) {
     $dvsData = $dvs->getJourney($treinnummer);
+    $dvsMaterieel = json_decode($dvsData['materieel']);
+    $dvsStopStations = json_decode($dvsData['stopstations']);
+
     $properties = array();
     $properties['materieelnummer'] = $materieeldeel->MaterieelDeelNummer[0];
     $properties['materieelvolgnummer'] = $materieeldeel->MaterieelVolgNummer;
@@ -76,7 +79,7 @@ function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel
         }
 
     $properties['id'] = (int)$materieeldeel->MaterieelDeelNummer; // This will allow leaflet-realtime to keep track of the entries in the GeoJSON
-    $properties['popupContent'] = "<b>" . $properties['transportmodecode'] . "Trein " . $treinnummer . "<br />Materieelnummer " . $properties['materieelnummer'] . "<br />" . "Snelheid: " . $properties['snelheid'] . "km/h<br />" . "Richting: " . $properties['richting'] . " graden<br />";
+    $properties['popupContent'] = "<b>" . $properties['transportmodecode'] . " Trein " . $treinnummer . "</b><br />Materieelnummer " . $properties['materieelnummer'] . " (" . $dvsMaterieel['MaterieelSoort'] . ")<br />" . "Snelheid: " . $properties['snelheid'] . "km/h<br />" . "Richting: " . $properties['richting'] . " graden<br />";
     $point = new \GeoJson\Geometry\Point([(float)$materieeldeel->Longitude, (float)$materieeldeel->Latitude]);
     return new \GeoJson\Feature\Feature($point, $properties);
 }
