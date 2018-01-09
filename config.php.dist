@@ -4,9 +4,16 @@ $config = array();
 //GEOJSON
 $config['geojson_location'] = "/path/where/the/geojson/should/be/placed/";
 
-//ARNU
+//ARNU (deprecated)
 $config['arnu_db_user'] = "username";
 $config['arnu_db_pass'] = "P4ssw0rd!";
 $config['arnu_db_host'] = "localhost";
 $config['arnu_db_name'] = "arnu_db";
 $config['arnu_db_table'] = "arnu";
+
+//DVS
+$config['dvs_db_user'] = "uname";
+$config['dvs_db_pass'] = "pass";
+$config['dvs_db_host'] = "localhost";
+$config['dvs_db_name'] = "dvs";
+$config['dvs_db_table'] = "dvs";
