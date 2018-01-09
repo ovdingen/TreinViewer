@@ -2,6 +2,10 @@
 
 include '../vendor/autoload.php';
 
+if(!file_exists("../vendor/autoload.php")) {
+    die("please run composer install, vendor/autoload.php does not exist");
+}
+
 include '../config.php';
 
 include '../classes/DVS.php';
