@@ -19,7 +19,7 @@
     <script type="text/javascript">
         var geojsonMarkerOptions = {
             'IC': {
-                radius: 8,
+                radius: 12,
                 fillColor: "#ffac00",
                 color: "#092869",
                 weight: 1.5,
@@ -27,7 +27,7 @@
                 fillOpacity: 0.8
             },
             'SPR': {
-                radius: 8,
+                radius: 12,
                 fillColor: "#e0e0de",
                 color: "#000",
                 weight: 1,
@@ -35,7 +35,7 @@
                 fillOpacity: 0.8
             },
             'default': {
-                radius: 8,
+                radius: 12,
                 fillColor: "#ff0000",
                 color: "#000",
                 weight: 1,
@@ -51,7 +51,7 @@
         var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
         var osm = new L.TileLayer(osmUrl, {
             minZoom: 8,
-            maxZoom: 12,
+            maxZoom: 18,
             attribution: osmAttrib
         });
         map.addLayer(osm);
