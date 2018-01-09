@@ -18,16 +18,16 @@
     <div id="map" class="map"></div>
     <script type="text/javascript">
         var geojsonMarkerOptions = {
-            'IC': {
-                radius: 12,
+            'Intercity': {
+                radius: 8,
                 fillColor: "#ffac00",
                 color: "#092869",
                 weight: 1.5,
                 opacity: 1,
                 fillOpacity: 0.8
             },
-            'SPR': {
-                radius: 12,
+            'Sprinter': {
+                radius: 8,
                 fillColor: "#e0e0de",
                 color: "#000",
                 weight: 1,
@@ -35,7 +35,7 @@
                 fillOpacity: 0.8
             },
             'default': {
-                radius: 12,
+                radius: 8,
                 fillColor: "#ff0000",
                 color: "#000",
                 weight: 1,
@@ -43,6 +43,7 @@
                 fillOpacity: 0.8
             }
         };
+
         var map = L.map('map', {
             center: [52.228936, 5.321492],
             zoom: 13
@@ -65,9 +66,9 @@
             },
             pointToLayer(feature, latlng) {
                 if(feature.properties.transportmodecode in geojsonMarkerOptions) {
-                    return L.circleMarker(latlng, geojsonMarkerOptions[feature.properties.transportmodecode]);
+                    return L.marker(latlng, {icon: geojsonMarkerOptions[feature.properties.transportmodecode]});
                 } else {
-                    return L.circleMarker(latlng, geojsonMarkerOptions.default);
+                    return L.marker(latlng, {icon: geojsonMarkerOptions.default});
                 }
             },
             interval: 3 * 1000
