@@ -1,1 +1,1 @@
-CREATE TABLE arnu(receive INT NOT NULL, servicecode INT NOT NULL, transportmodecode VARCHAR(12), servicetype VARCHAR(40), contents TEXT);
+CREATE TABLE dvs(receive INT NOT NULL, transportmodecode VARCHAR(128), treinnummer INT NOT NULL, treinformule INT, materieel TEXT, vervoerder VARCHAR(128), treineindbestemming TEXT, toeslag VARCHAR(2), reserveren VARCHAR(2), nietinstappen VARCHAR(2), speciaalkaartje VARCHAR(2));
