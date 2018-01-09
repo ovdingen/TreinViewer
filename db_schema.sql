@@ -1,1 +1,1 @@
-CREATE TABLE dvs(receive INT NOT NULL, transportmodecode VARCHAR(128), treinnummer INT NOT NULL, treinformule INT, materieel TEXT, vervoerder VARCHAR(128), treineindbestemming TEXT, toeslag VARCHAR(2), reserveren VARCHAR(2), nietinstappen VARCHAR(2), speciaalkaartje VARCHAR(2));
+CREATE TABLE dvs(receive INT NOT NULL, transportmodecode VARCHAR(128), treinnummer INT NOT NULL, treinformule INT, materieel TEXT, vervoerder VARCHAR(128), treineindbestemming TEXT, toeslag VARCHAR(2), reserveren VARCHAR(2), nietinstappen VARCHAR(2), speciaalkaartje VARCHAR(2), stopstations TEXT);
