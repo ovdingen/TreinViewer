@@ -66,9 +66,9 @@
             },
             pointToLayer(feature, latlng) {
                 if(feature.properties.transportmodecode in geojsonMarkerOptions) {
-                    return L.marker(latlng, {icon: geojsonMarkerOptions[feature.properties.transportmodecode]});
+                    return L.circleMarker(latlng, geojsonMarkerOptions[feature.properties.transportmodecode]);
                 } else {
-                    return L.marker(latlng, {icon: geojsonMarkerOptions.default});
+                    return L.circleMarker(latlng, geojsonMarkerOptions.default);
                 }
             },
             interval: 3 * 1000
