@@ -60,8 +60,8 @@ function verwerkNSTreinPositieBericht(string $contents, DVS $dvs, array $config)
 
 function maakGeoJSONFeatureVanTreinMaterieelDeel(SimpleXMLElement $materieeldeel, $treinnummer, DVS $dvs) {
     $dvsData = $dvs->getJourney($treinnummer);
-    $dvsMaterieel = json_decode($dvsData['materieel']);
-    $dvsStopStations = json_decode($dvsData['stopstations']);
+    $dvsMaterieel = json_decode($dvsData['materieel'], true);
+    $dvsStopStations = json_decode($dvsData['stopstations'], true);
 
     $properties = array();
     $properties['materieelnummer'] = $materieeldeel->MaterieelDeelNummer[0];
