@@ -10,9 +10,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="15.590223mm"
-   height="23.164957mm"
-   viewBox="0 0 15.590223 23.164957"
+   width="42.526314mm"
+   height="42.526314mm"
+   viewBox="0 0 42.526314 42.526314"
    version="1.1"
    id="svg16"
    sodipodi:docname="UNKNOWN.svg"
@@ -41,8 +41,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.92630988"
-     inkscape:cx="-168.54212"
-     inkscape:cy="82.308692"
+     inkscape:cx="-341.27605"
+     inkscape:cy="70.499196"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -73,7 +73,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-12.984431,-8.036926)">
+     transform="translate(-0.00147179,0.00668022)">
     <circle
        id="path20"
        cx="21.264629"
