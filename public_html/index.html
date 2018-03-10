@@ -77,6 +77,20 @@
               console.log(e.data);
             }
           }*/
+
+          // Locatie opvragen van gebruiker
+          map.locate({setView: true, maxZoom: 16});
+
+          function onLocationFound(e) {
+              var radius = e.accuracy / 2;
+
+              L.marker(e.latlng).addTo(map)
+                  .bindPopup("Volgens je browser ben je momenteel hier.<br><i>Deze locatie kan door verschillende<br>factoren niet kloppen.<br>Onze excuses voor het ongemak.</i>");
+
+              L.circle(e.latlng, radius).addTo(map);
+          }
+
+          map.on('locationfound', onLocationFound);
     </script>
 
     <script src="js/fullscreen.js"></script>
